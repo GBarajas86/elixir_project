@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :ProjectPhoenix, ProjectPhoenix.Repo,
+config :project_phoenix, ProjectPhoenix.Repo,
   username: "gualvalenciabarajas",
   password: "demosapp1!",
   database: "project_phoenix_dev",

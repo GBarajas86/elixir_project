@@ -3,6 +3,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
    Form Promo Ganga
   """
   use ProjectPhoenixWeb, :live_view
+  alias ProjectPhoenix.Promociones
 
   def render(assigns) do
     ~L"""
@@ -33,7 +34,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="title">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="titulo">
                       </div>
                     </div>
                   </div>
@@ -43,7 +44,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="telephone">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="telefono">
                       </div>
                     </div>
                   </div>
@@ -55,7 +56,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="schedule">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="horario">
                       </div>
                     </div>
                   </div>
@@ -65,7 +66,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="description">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="descripcion">
                       </div>
                     </div>
                   </div>
@@ -87,7 +88,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="address">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="direccion">
                       </div>
                     </div>
                   </div>
@@ -97,7 +98,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="address_facebook">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="facebook">
                       </div>
                     </div>
                   </div>
@@ -107,7 +108,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="address_instagram">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="instagram">
                       </div>
                     </div>
                   </div>
@@ -119,7 +120,7 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                     </label>
                     <div class="mt-1 sm:mt-0 sm:col-span-2">
                       <div class="flex max-w-lg rounded-md shadow-sm">
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="address_google_maps">
+                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5" type="text" name="maps">
                       </div>
                     </div>
                   </div>
@@ -149,10 +150,10 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
                   <%= for promo <- @promos do %>
                     <tr id="promo-<%= promo.id %>">
                       <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.id %></td>
-                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.title %></td>
-                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.description %></td>
+                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.titulo %></td>
+                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.descripcion %></td>
                       <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.email %></td>
-                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.telephone %></td>
+                      <td class="px-6 py-4 text-sm font-medium leading-5"><%= promo.telefono %></td>
                       <td class="px-6 py-4 text-sm font-medium leading-5 text-right whitespace-no-wrap">
                         <span class="cursor-pointer" phx-click="details" phx-value-id="<%= promo.id %>">Detalles</span>
                         <span class="mx-2 cursor-pointer" phx-click="open_edit" phx-value-id="<%= promo.id %>">Editar</span>
@@ -166,146 +167,143 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
           </div>
         </div>
 
+
         <div class="flex flex-col mx-12 <%= if not @detail, do: "hidden" %> ">
-          <div class="px-10 py-3 text-center bg-white rounded ">
+        <%= if @promo != nil do %>
+        <div class="px-10 py-3 text-center bg-white rounded ">
             <h2 class="text-lg font-bold text-center text-gray-700" >Detalles</h2>
             <svg phx-click="close" class="w-8 h-8 cursor-pointer fill-current sm:w-12 sm:h-12 message-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M2.93 17.07A10 10 0 1117.07 2.93 10 10 0 012.93 17.07zM11.4 10l2.83-2.83-1.41-1.41L10 8.59 7.17 5.76 5.76 7.17 8.59 10l-2.83 2.83 1.41 1.41L10 11.41l2.83 2.83 1.41-1.41L11.41 10z"/>
             </svg>
-            <!--<span class="text-sm text-gray-700">id = <%= @promo.id %></span><br>
-            <span class="text-sm text-gray-700">title = <%= @promo.title %></span><br>
-            <span class="text-sm text-gray-700">description = <%= @promo.description %></span><br>
-            <span class="text-sm text-gray-700"> email = <%= @promo.email %></span><br>
-            <span class="text-sm text-gray-700"> telephone = <%= @promo.telephone %></span><br>
-            <span class="text-sm text-gray-700"> schedule = <%= @promo.schedule %></span><br>
-            <span class="text-sm text-gray-700"> address = <%= @promo.address %></span><br>
-            -->
+
+
               <form class="flex items-center justify-start w-full sm:justify-center md:justify-end" phx-submit="edit">
-                <div class="w-full p-1 sm:px-5 sm:py-2">
-                <div class="flex flex-col w-full md:flex-row">
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      id
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.id %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_id" value="<%= @promo.id %>">
+                  <div class="w-full p-1 sm:px-5 sm:py-2">
+                  <div class="flex flex-col w-full md:flex-row">
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        id
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 " type="text" name="update_id" value="<%= @promo.id %>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Título
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.titulo %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_title" value="<%= @promo.titulo %>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Teléfono
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.telefono %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_telephone" value="<%= @promo.telefono %>">
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Título
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.title %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_title" value="<%= @promo.title %>">
+                  <div class="flex flex-col w-full md:flex-row">
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Horario
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.horario %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_schedule" value="<%= @promo.horario %>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Descripción
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.descripcion %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_description" value="<%= @promo.descripcion %>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Correo Electrónico
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.email %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_email" value="<%= @promo.email %>">
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Teléfono
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.telephone %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_telephone" value="<%= @promo.telephone %>">
+                  <div class="flex flex-col w-full md:flex-row">
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Dirección
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.direccion %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address" value="<%= @promo.direccion %>">
+                        </div>
                       </div>
                     </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Facebook
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.facebook %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_facebook" value="<%= @promo.facebook %>">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Instagram
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.instagram %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_instagram" value="<%= @promo.instagram %>">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col w-full md:flex-row">
+                    <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
+                      <label class="block text-sm font-medium leading-5 text-gray-700">
+                        Google Maps
+                      </label>
+                      <div class="mt-1 sm:mt-0 sm:col-span-2">
+                        <div class="flex max-w-lg rounded-md shadow-sm">
+                          <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.maps %></span>
+                          <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_google_maps" value="<%= @promo.maps %>">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex justify-center w-full mt-5 md:justify-end">
+                    <button class="px-5 py-2 text-sm font-medium text-white bg-green-600 border-2 rounded-lg shadow-md sm:text-base sm:px-12 hover:bg-gray-100 hover:text-green-600 hover:border-green-600 focus:outline-none focus:bg-white focus:border-green-600 focus:text-green-600 <%= if not @edit, do: "hidden" %>">Actualizar</button>
                   </div>
                 </div>
-                <div class="flex flex-col w-full md:flex-row">
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Horario
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.schedule %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_schedule" value="<%= @promo.schedule %>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Descripción
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.description %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_description" value="<%= @promo.description %>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Correo Electrónico
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.email %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_email" value="<%= @promo.email %>">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col w-full md:flex-row">
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Dirección
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.address %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address" value="<%= @promo.address %>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Facebook
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.address_facebook %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_facebook" value="<%= @promo.address_facebook %>">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Instagram
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.address_instagram %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_instagram" value="<%= @promo.address_instagram %>">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex flex-col w-full md:flex-row">
-                  <div class="flex flex-col flex-1 mx-2 mt-3 md:mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700">
-                      Google Maps
-                    </label>
-                    <div class="mt-1 sm:mt-0 sm:col-span-2">
-                      <div class="flex max-w-lg rounded-md shadow-sm">
-                        <span class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if @edit, do: "hidden" %>"><%= @promo.address_google_maps %></span>
-                        <input class="block w-full px-3 py-2 transition duration-150 ease-in-out appearance-none sm:text-sm sm:leading-5 <%= if not @edit, do: "hidden" %>" type="text" name="update_address_google_maps" value="<%= @promo.address_google_maps %>">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex justify-center w-full mt-5 md:justify-end">
-                  <button class="px-5 py-2 text-sm font-medium text-white bg-green-600 border-2 rounded-lg shadow-md sm:text-base sm:px-12 hover:bg-gray-100 hover:text-green-600 hover:border-green-600 focus:outline-none focus:bg-white focus:border-green-600 focus:text-green-600 <%= if not @edit, do: "hidden" %>">Actualizar</button>
-                </div>
-              </div>
               </form>
           </div>
+          <% end %>
+
         </div>
 
 
@@ -315,65 +313,46 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
   end
 
   def mount(_params, _session, socket) do
+      promos = Promociones.list_promo()
 
-    promo = %{
-      id: nil,
-      title: nil,
-      description: nil,
-      email: nil,
-      telephone: nil,
-      schedule: nil,
-      address: nil,
-      address_facebook: nil,
-      address_instagram: nil,
-      address_google_maps: nil
-    }
-
-
-      {:ok, assign(socket, promos: [], detail: false, promo: promo, edit: false )}
+      {:ok, assign(socket, promos: promos, detail: false, promo: nil, edit: false )}
   end
 
   def handle_event("save",
     %{
-      "id" => id,
-      "title" => title,
-      "description" => description,
+      "titulo" => title,
+      "descripcion" => description,
       "email" => email,
-      "telephone" => telephone,
-      "schedule" => schedule,
-      "address" => address,
-      "address_facebook" => address_facebook,
-      "address_instagram" => address_instagram,
-      "address_google_maps" => address_google_maps
-      }, %{assigns: %{promos: promos}} = socket)do
+      "telefono" => telephone,
+      "horario" => schedule,
+      "direccion" => address,
+      "facebook" => address_facebook,
+      "instagram" => address_instagram,
+      "maps" => address_google_maps
+      }, socket)do
 
       params = %{
-        id: id,
-        title: title,
-        description: description,
+        titulo: title,
+        descripcion: description,
         email: email,
-        telephone: telephone,
-        schedule: schedule,
-        address: address,
-        address_facebook: address_facebook,
-        address_instagram: address_instagram,
-        address_google_maps: address_google_maps
+        telefono: telephone,
+        horario: schedule,
+        direccion: address,
+        facebook: address_facebook,
+        instagram: address_instagram,
+        maps: address_google_maps
       }
-      |>IO.inspect()
 
-      new_promo = promos ++ [params]
+      Promociones.create_promo(params)
+      new_promo = Promociones.list_promo()
 
     {:noreply, assign(socket, promos: new_promo)}
   end
 
-  def handle_event("details", %{"id" => id},
-    %{assigns: %{promos: promos}} = socket) do
+  def handle_event("details", %{"id" => id}, socket) do
 
-      [promo] = Enum.filter(promos, fn p -> p.id == id end)
-
-      IO.inspect(promo)
-      IO.inspect(promo.id)
-      {:noreply, assign(socket, detail: true, promo: promo)}
+      promo = Promociones.get_promo(id: id)
+      {:noreply, assign(socket, detail: true, promo: promo, edit: false)}
   end
 
   def handle_event("close", _params, socket) do
@@ -381,24 +360,18 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
   end
 
 
-  def handle_event("delete", %{"id" => id},
-    %{assigns: %{promos: promos}} = socket) do
+  def handle_event("delete", %{"id" => id}, socket) do
 
-      [promo] = Enum.filter(promos, fn p -> p.id == id end)
+      promo = Promociones.get_promo(id: id)
+      Promociones.delete_promo(promo)
+      promos = Promociones.list_promo()
 
-      IO.inspect(promos)
-      IO.inspect("---------------------")
-
-
-      promos = List.delete(promos, promo)
-      |>IO.inspect()
-      {:noreply, assign(socket, detail: false, promos: promos)}
+      {:noreply, assign(socket,  promo: promos)}
   end
 
-  def handle_event("open_edit", %{"id" => id},
-    %{assigns: %{promos: promos}} = socket) do
+  def handle_event("open_edit", %{"id" => id}, socket) do
 
-    [promo] = Enum.filter(promos, fn p -> p.id == id end)
+    promo = Promociones.get_promo(id: id)
 
 
     {:noreply, assign(socket, detail: true, promo: promo, edit: true)}
@@ -416,33 +389,25 @@ defmodule ProjectPhoenixWeb.Live.FormPromo do
     "update_address_facebook" => address_facebook,
     "update_address_instagram" => address_instagram,
     "update_address_google_maps" => address_google_maps
-    }, %{assigns: %{promos: promos}} = socket)do
-      IO.inspect("---------------edit--------------")
-    params = %{
-      id: id,
-      title: title,
-      description: description,
+    }, socket)do
+
+      params = %{
+      titulo: title,
+      descripcion: description,
       email: email,
-      telephone: telephone,
-      schedule: schedule,
-      address: address,
-      address_facebook: address_facebook,
-      address_instagram: address_instagram,
-      address_google_maps: address_google_maps
+      telefono: telephone,
+      horario: schedule,
+      direccion: address,
+      facebook: address_facebook,
+      instagram: address_instagram,
+      maps: address_google_maps
     }
-    |>IO.inspect()
 
-    [promo] = Enum.filter(promos, fn p -> p.id == id end)
+    promo = Promociones.get_promo(id: id)
+    update_promo = Promociones.update_promo(promo, params)
+    promos = Promociones.list_promo()
 
-    update_promo = Map.merge(promo, params) |> IO.inspect()
-
-    promos = List.delete(promos, promo) |> IO.inspect()
-
-    new_promos = promos ++ [update_promo]
-
-    IO.inspect(promos)
-
-    {:noreply, assign(socket, promos: new_promos, detail: true, promo: update_promo, edit: false )}
+    {:noreply, assign(socket, promos: promos, detail: true, promo: update_promo, edit: false )}
   end
 
 end

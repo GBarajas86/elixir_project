@@ -1,5 +1,6 @@
 defmodule ProjectPhoenix.Promociones.Schemas.Promocion do
   use Ecto.Schema
+  import Ecto.Changeset
 
   schema  "promociones" do
     field :titulo, :string
@@ -11,9 +12,14 @@ defmodule ProjectPhoenix.Promociones.Schemas.Promocion do
     field :facebook, :string
     field :instagram, :string
     field :maps, :string
-    field :promociones, {:array, :string}
 
     timestamps()
 
+  end
+
+  def changeset(promotion, params \\ %{}) do
+    promotion
+      |> cast(params, [:titulo, :descripcion, :email, :telefono, :horario, :direccion, :facebook, :instagram, :maps])
+      |> validate_required([:titulo, :descripcion, :email, :telefono, :horario, :direccion, :facebook, :instagram, :maps])
   end
 end
